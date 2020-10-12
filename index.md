@@ -1,7 +1,9 @@
 ## Welcome to the SEE-Insight Research Team
 
-The SEE-Insight Research Team is lead by [Dr. Dirk Colbry](http://www.dirk.colbry.com/) in the Department of Computational Mathematics, Science and Engineering at Michigan State University.  
+The SEE-Insight Research Team is lead by [Dr. Dirk Colbry](http://www.dirk.colbry.com/) in the Department of Computational Mathematics, Science and Engineering at Michigan State University. 
 
+We hold a weekly group meeting on Wednesdays 1-2pm ET. Please email Dr. Colbry i[colbrydi@msu.edu](mailto:colbrydi@msu.edu) if you would like to join us and he can send you the zoom coordinates.
+ 
 ### Problem Description
 Low-cost imaging allow researchers who rely on visual observations to digitally record experiments, resulting in huge databases of images that can be reviewed and re-reviewed over time. “Scientific image understanding” is the process of extracting scientific measurements out of images. Since the information of interest within an image changes with each new research question there is no single “universal measurement” and no single software program that can analyze every image or solve every problem. Instead, researchers must manually re-annotate images or write new analysis software every time they want to ask new questions.
 
