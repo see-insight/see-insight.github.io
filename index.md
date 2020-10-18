@@ -1,5 +1,7 @@
 ## Welcome to the SEE-Insight Research Team
 
+![SEE-Insight logo](./images/Mag_eye.png)
+
 The SEE-Insight Research Team is lead by [Dr. Dirk Colbry](http://www.dirk.colbry.com/) in the Department of Computational Mathematics, Science and Engineering at Michigan State University. 
 
 We hold a weekly group meeting on Wednesdays 1-2pm ET. Please email Dr. Colbry [colbrydi@msu.edu](mailto:colbrydi@msu.edu) if you would like to join us and he can send you the zoom coordinates.
