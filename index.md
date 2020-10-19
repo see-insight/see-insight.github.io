@@ -18,6 +18,10 @@ The SEE-Insight Team is developing image understanding tools which focus on comm
 The SEE-Insight Project is researching and developing tools using the following design guidelines:
 
 *	**_Transparent Interface Design:_** Transparent design was first outlined by Doug Norman in “Design of Everyday Things” and “The Invisible Computer.” In this context, a good interface is one where the computer becomes invisible and users can focus on what they are trying to do instead of how to do it using the computer. In the case of exploratory image understanding, transparent design allows the researcher to focus on analyzing the image rather than on the mechanics of the software.
-*	**_Keeping the Researcher in the Loop:_** At every step in the analysis and annotation process, researchers can review the SEE toolkit suggestions and accept, adjust or reject them as needed. The toolkit always allows researchers to make the final decisions.
-*	**_User Feedback and Confidence Measures:_** Providing feedback is key if the SEE toolkit is to gain and keep researchers’ trust. This feedback takes the form of measurements with confidence measures, which allows researchers to make an expert judgement about the likelihood of the suggested measurement being appropriate for the current question.
-*	**_Feature Scaffolding:_** The toolkit is designed to provide new users with more automation and step-by-step instructions, as well as additional functionality for “power users” who have gained familiarity and trust in the toolkit.
+*	**_Keeping the Researcher in the Loop:_** At every step in the analysis and annotation process, researchers can review the SEE tools  suggestions and accept, adjust or reject them as needed. The SEE tools always allows researchers to make the final decisions.
+*	**_User Feedback and Confidence Measures:_** Providing feedback is key if the SEE tools is to gain and keep researchers’ trust. This feedback takes the form of measurements with confidence measures, which allows researchers to make an expert judgement about the likelihood of the suggested measurement being appropriate for the current question.
+*	**_Feature Scaffolding:_** The SEE tools is designed to provide new users with more automation and step-by-step instructions, as well as additional functionality for “power users” who have gained familiarity and trust in the SEE tools.
+
+# The SEE-Tools
+
+- [SEE-Segment](https://see-insight.github.io/see-segment)
