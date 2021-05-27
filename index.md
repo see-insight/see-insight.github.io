@@ -22,7 +22,13 @@ The SEE-Insight Project is researching and developing tools using the following 
 *	**_User Feedback and Confidence Measures:_** Providing feedback is key if the SEE tools is to gain and keep researchers’ trust. This feedback takes the form of measurements with confidence measures, which allows researchers to make an expert judgement about the likelihood of the suggested measurement being appropriate for the current question.
 *	**_Feature Scaffolding:_** The SEE tools is designed to provide new users with more automation and step-by-step instructions, as well as additional functionality for “power users” who have gained familiarity and trust in the SEE tools.
 
+# Summary video about SEE-Insight Research
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5inNPZ45Lsc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 # The SEE-Tools
 
 - [SEE-Segment](https://see-insight.github.io/see-segment)
+
 
