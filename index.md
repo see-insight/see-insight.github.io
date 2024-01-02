@@ -31,4 +31,6 @@ The SEE-Insight Project is researching and developing tools using the following 
 
 - [SEE-Segment](https://see-insight.github.io/see-segment)
 
+# Team 
 
+- [List of current and previous team members](Contributors)
