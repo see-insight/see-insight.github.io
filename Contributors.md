@@ -3,30 +3,26 @@
 The SEE-Insight team has mostly consisted of students working with [Dr. Dirk Colbry](http://www.dirk.colbry.com/) at Michigan State University.  
 
 ## Current members
-
 * [Dr. Dirk Colbry](http://www.dirk.colbry.com)
-* Nate Britton
-* Emani Hunter
-* Cameron Hurley
-* Paul Ezimako 
-* Katrina Gensterblum 
-* Nicholas Grabill 
-* Kai Pinckard
-
-## Student Presentation Relating to contributions to the SEE-Segment tool
-
-* Noah Stolz, “Searching the Algorithm Space to Automate Scientific Image Analysis Workflows,” Poster presentation at Mid-Sure, August 2019.
-
+* Maryam Berijanian
+* Nation Haut
+* Doruk Mutlu
+* Andrew Hart
+  
 ## Student presentations for SEE-Insight Projects
-
-* Amon Harris
+* Catalina Diaz, “Enhancing Image Analysis: Identifying Image Segmentation Algorithms through SEE-Segment” Presented at MSU HSHSP, 2023
+* Katie Reagan, “Intelligent Tools for Image Understanding: A Comparative Study Between Manual and Machine Image Segmentation” Mid-Sure, July, 2023
+* Navya Bhardwaj, “Automating Image Annotation for Scientific Research: Enhancing search space using Hugging Face models” Mid-Sure, July, 2023
+* Doruk Alp Mutlu, “Optimizing Parameters of Quick Shift Mode-Seeking Algorithm for Scientific Image Segmentation” UURAF, May 2023
+* Emani Hunter, Cameron Hurley, “Dash-Segment: Automating Image Segmentation Workflows” Virtual Presentation at UURAF, April, 2021
+* Nicholas Grabill, “Anaysis of Scaling Techniques in See Image Segmentation Software Utilizing Evolutionary Algorithms” Virtual Presentation at Mid-Sure, August, 2020
+* Noah Stolz, “Searching the Algorithm Space to Automate Scientific Image Analysis Workflows,” Poster presentation at Mid-Sure, August 2019.
 * Ali Radha. “Automated Image Segmentation System for use in Research Workflows.” Poster presentation at Mid-SURE, July  24, 2013
 * Ty Buckley, Hattie Pimentel, “The challenges of developing research tools in active and responsive open source communities,” Poster presentation at UURAF, April 2019.
 * Ty Buckley, Bella Oh, “Project Insight: Development of Programming Tools for Scientific Image Analysis,” Poster presentation at UURAF, April 13, 2018.
 * Nolan Feeny, “Interactive Scientific Image Annotation Using Jupyter Notebooks.” Poster presentation at Mid-Sure, 2017. 
 
 ## Student Presentations relating to the Chamview project (predecessor to SEE-Insight)
-
 * Aaron Beckett, “Testing the Effectiveness of Chamview: Evaluation of a Researcher in the Loop Workflow for Image Analysis.” Poster presentation at UURAF, April 4 2014.
 * Aaron Beckett, “Research Centered Design: A Case Study in Building Usable Image Analysis Tools for Researchers.” Poster presentation at Mid-SURE, July  24, 2013
 * Manuel Dosalman. “Toolbox for evaluating algorithms that detect anchor points in images.” Poster presentation at Mid-SURE, July 24, 2013
