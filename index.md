@@ -34,3 +34,6 @@ The SEE-Insight Project is researching and developing tools using the following 
 # Team 
 
 - [List of current and previous team members](Contributors)
+
+# Interested in joining?
+- [Click here!](https://msu-cmse-courses.github.io/VIP_website/teams)
