@@ -6,13 +6,13 @@ Welcome to the SEE-Insight Lab Team Documentation!
 
 - [ ] Email Dirk Colbry (colbrydi@msu.edu) to be added to the SEE-Insight Microsoft Team and email list.
 - [ ] Click on <https://www.zotero.org/groups/2465069/see-insight> to be added to the team Zotero
-- [ ] Review the team mentor/mentee contract
+- [ ] Review the [team mentor/mentee contract](Mentor_Agreement)
 - [ ] Join the SEE-Insight GitHub team here: <https://github.com/see-insight>
 
 ## Team Resources
 - [SEE-Insight Intro](https://see-insight.github.io)
 - [Team Project/Todo list](https://github.com/orgs/see-insight/projects/1)
-- [Author Guidelines](Author_Guildlines)
+- [Author Guidelines](Author_Guidelines)
 - [Mentor/Mentee Contract](Mentor_Agreement)
 - [Rules for Repositries](Rules_for_Repos)
 - [Dirk's User Manual](User_Manual)
