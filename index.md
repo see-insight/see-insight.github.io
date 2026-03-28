@@ -35,5 +35,13 @@ The SEE-Insight Project is researching and developing tools using the following 
 
 - [List of current and previous team members](Contributors)
 
+# Dirk's Research Guidelines 
+
+- [Reviewing Scientific Articles](Article_Review)
+- [Guidelines for Authorship in Scholarly Publications](Author_Guidelines)
+- [Student Mentor-Mentee Agreement](Mentor_Agreement)
+- [Dirk’s User Manual](User_Manual)
+- [Dirk’s Guidelines for Project Code Repositories](Rules_for_Repos)
+
 # Interested in joining?
 - [Click here!](https://msu-cmse-courses.github.io/VIP_website/teams)
