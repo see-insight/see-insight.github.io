@@ -63,5 +63,5 @@ To join, please fill out [this form](https://forms.gle/feL3uTWVPi41Xh8SA)
 ### 3. Research for Credit Through VIP (Vertically Integrated Projects)
 Some students in the SEE-Insight lab participate through the **Vertically Integrated Projects (VIP)** program, which allows them to earn **credit** while contributing to long‑term, multi-semester, faculty‑led research teams. VIP students build both technical depth and team‑based research experience over multiple semesters.
 
-You can learn more about the msu VIP pilot [here](https://msu-cmse-courses.github.io/VIP_website/teams).
+You can learn more about the MSU VIP pilot [here](https://msu-cmse-courses.github.io/VIP_website/teams).
 
