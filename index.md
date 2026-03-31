@@ -44,4 +44,24 @@ The SEE-Insight Project is researching and developing tools using the following 
 - [Dirk’s Guidelines for Project Code Repositories](Rules_for_Repos)
 
 # Interested in joining?
-- [Click here!](https://msu-cmse-courses.github.io/VIP_website/teams)
+Thank you for your interest in the SEE-Insight Lab. 
+
+At the moment, **our lab does not have any funding available for new students**. However, there are several ways you can still stay connected and get involved:
+
+### 1. Open Group Meetings
+Our SEE‑Insight group meetings are open to the public, and visitors are always welcome. All of our work is open source, and some students have discovered meaningful ways to contribute simply by attending meetings, following ongoing discussions, and exploring active projects.
+
+Dr. Colbry generally prefers to work with students who have some “skin in the game." For example, those earning course credit or being paid, because that allows him to provide clearer structure and expectations. However, a small number of highly motivated students have self‑identified interesting problems and contributed in substantial ways through our open‑source ecosystem.
+
+If you’d like to join meetings, please email Dr. Colbry [colbrydi@msu.edu](mailto:colbrydi@msu.edu) and he can send you the room location, Zoom link, and/or add you to our group email list.
+
+### 2. Opportunities Mailing List
+Dr. Colbry maintains a list of students who are looking for research or job opportunities. When relevant opportunities are found, he forwards them to that list.
+
+To join, please fill out [this form](https://forms.gle/feL3uTWVPi41Xh8SA)
+
+### 3. Research for Credit Through VIP (Vertically Integrated Projects)
+Some students in the SEE-Insight lab participate through the **Vertically Integrated Projects (VIP)** program, which allows them to earn **credit** while contributing to long‑term, multi-semester, faculty‑led research teams. VIP students build both technical depth and team‑based research experience over multiple semesters.
+
+You can learn more about the msu VIP pilot [here](https://msu-cmse-courses.github.io/VIP_website/teams).
+
