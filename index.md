@@ -37,11 +37,11 @@ The SEE-Insight Project is researching and developing tools using the following 
 
 # Dirk's Research Guidelines 
 
-- [Reviewing Scientific Articles](Article_Review)
-- [Guidelines for Authorship in Scholarly Publications](Author_Guidelines)
-- [Student Mentor-Mentee Agreement](Mentor_Agreement)
-- [Dirk’s User Manual](User_Manual)
-- [Dirk’s Guidelines for Project Code Repositories](Rules_for_Repos)
+- [Reviewing Scientific Articles](https://colbrydi.github.io/Research_guidelines/Article_Review.html)
+- [Guidelines for Authorship in Scholarly Publications](https://colbrydi.github.io/Research_guidelines/Author_Guidelines.html)
+- [Student Mentor-Mentee Agreement](https://colbrydi.github.io/Research_guidelines/Mentor_Agreement.html)
+- [Dirk’s User Manual](https://colbrydi.github.io/Research_guidelines/User_Manual.html)
+- [Dirk’s Guidelines for Project Code Repositories](https://colbrydi.github.io/Research_guidelines/Rules_for_Repos.html)
 
 # Interested in joining?
 Thank you for your interest in the SEE-Insight Lab. 
