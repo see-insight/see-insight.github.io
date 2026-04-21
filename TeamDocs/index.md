@@ -16,6 +16,7 @@ Welcome to the SEE-Insight Lab Team Documentation!
 - [Mentor/Mentee Contract](Mentor_Agreement)
 - [Rules for Repositries](Rules_for_Repos)
 - [Dirk's User Manual](User_Manual)
+- [Team Tools & Tutorials](TeamTools_Tutorial)
 
 ### Git Tutorials
   - <https://ohmygit.org/>
