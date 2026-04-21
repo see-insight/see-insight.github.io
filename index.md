@@ -65,3 +65,4 @@ Some students in the SEE-Insight lab participate through the **Vertically Integr
 
 You can learn more about the MSU VIP pilot [here](https://msu-cmse-courses.github.io/VIP_website/teams).
 
+### [Team Tutorials](TeamDocs/TeamTools_Tutorial)
