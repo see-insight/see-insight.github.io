@@ -24,3 +24,13 @@ __pycache__
 .coverage
 *.swp
 *.out
+
+# HPAI Project Research Data
+
+# Ignore raw data files inside project folders
+HPAI-EDA/data/
+
+# Ignore global data extensions across the project
+*.csv
+*.xlsx
+*.tsv
