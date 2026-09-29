@@ -10,7 +10,6 @@ from pathlib import Path
 import pandas as pd
 from IPython.core.display_functions import display
 
-
 # Read in the data
 # Function to read in data with three inputs, folder with file, file name, and the df name
 def read_data(parent_folder,file_name,df_name):
@@ -41,10 +40,10 @@ for file_path in data_directory.glob("Robot Farm #*.xlsx"):
 
 # More initial data analysis
 # HPAI Results pre-clean analysis
-# First 15 rows
-print(HPAI_results.head(15))
-# Last 15 riws
-print(HPAI_results.tail(15))
+# First 3 rows
+print(HPAI_results.head(3))
+# Last 3 rows
+print(HPAI_results.tail(3))
 print("\nNumber of rows:")
 print(len(HPAI_results))
 print("\nUnique values:")
@@ -55,6 +54,12 @@ print(HPAI_results_duplicates)
 print("\nNumber of duplicate rows:", HPAI_results.duplicated().sum())
 
 # Robotic milking data pre-clean analysis
+# Total number of files and tabs
+total_files = len(Robot_milking_data)
+total_tabs = sum(len(sheets) for sheets in Robot_milking_data.values())
+print("\nNumber of files:", total_files)
+print("\nNumber of tabs:", total_tabs)
+
 for file_name, sheets in Robot_milking_data.items():
 
     # Separate files with lines
@@ -69,13 +74,13 @@ for file_name, sheets in Robot_milking_data.items():
         print("Tab:", sheet_name)
         print("-" * 40)
 
-        # First 15 rows
-        print("\nFirst 15 rows:")
-        print(df.head(15))
+        # First 3 rows
+        print("\nFirst 3 rows:")
+        print(df.head(3))
 
-        # Last 15 rows
-        print("\nLast 15 rows:")
-        print(df.tail(15))
+        # Last 3 rows
+        print("\nLast 3 rows:")
+        print(df.tail(3))
 
         # Unique values
         print("\nUnique values:")
@@ -87,6 +92,9 @@ for file_name, sheets in Robot_milking_data.items():
         print(duplicates)
 
         print("\nNumber of duplicate rows:", df.duplicated().sum())
+
+        # Missing values
+        print("\nNumber of NA:", df.isna().sum())
 
 # Clean the data
 # Clean HPAI Results
@@ -133,13 +141,46 @@ HPAI_results["ELISA_Interpretation"] = (
 # Keep the date as a separate column for now
 HPAI_results["Test_Date"] = pd.to_datetime("2025-05-22")
 
-# Check for missing values
-print("Number of N/A:", HPAI_results.isna().sum())
+# Check for missing values again
+print("Number of NA:", HPAI_results.isna().sum())
 
 # Check for duplicates again
 print("Exact duplicate rows:", HPAI_results.duplicated().sum())
 
 display(HPAI_results)
+
+# Clean Robotic Milking Data
+for file_name, sheets in Robot_milking_data.items():
+
+    for sheet_name, df in sheets.items():
+
+        # Clean column names
+        df.columns = (
+            df.columns
+            .astype(str)
+            .str.replace("\xa0", " ", regex=False)
+            .str.replace(r"\s+", " ", regex=True)
+            .str.strip()
+        )
+
+        # Remove completely empty rows
+        df = df.dropna(how="all")
+
+        # Remove completely empty columns
+        df = df.dropna(axis=1, how="all")
+
+        # Remove exact duplicate rows
+        df = df.drop_duplicates()
+
+        # Strip whitespace from text values
+        for column in df.select_dtypes(include="object").columns:
+            df[column] = df[column].map(
+                lambda x: x.strip() if isinstance(x, str) else x
+            )
+
+        # Store cleaned DataFrame back
+        sheets[sheet_name] = df
+
 # Data analysis with clean data
 
 # Correlation Matrix
