@@ -8,6 +8,8 @@ Contributions by Brendan Daly
 # Load in necessary libraries
 from pathlib import Path
 import pandas as pd
+from IPython.core.display_functions import display
+
 
 # Read in the data
 # Function to read in data with three inputs, folder with file, file name, and the df name
@@ -87,7 +89,57 @@ for file_name, sheets in Robot_milking_data.items():
         print("\nNumber of duplicate rows:", df.duplicated().sum())
 
 # Clean the data
+# Clean HPAI Results
+# (no duplicates)
+# Normalize whitespace in column names
+HPAI_results.columns = (
+    HPAI_results.columns
+    .astype(str)
+    .str.replace("\xa0", " ", regex=False)
+    .str.replace(r"\s+", " ", regex=True)
+    .str.strip()
+)
 
+# Rename columns
+HPAI_results = HPAI_results.rename(columns={
+    "Influenza A ELISA SN (S/N) Serum": "ELISA_SN",
+    "Influenza A ELISA Interpretation Serum 05/22/25": "ELISA_Interpretation"
+})
+
+# Make classification column for ML with simple numbers
+HPAI_results["ELISA_Classification"] = HPAI_results["ELISA_Interpretation"].map({
+    "Negative": 0,
+    "Suspect": 1,
+    "Positive": 2
+})
+
+# Make and keep cow IDs as strings
+HPAI_results["Cow_ID"] = HPAI_results["Cow_ID"].astype(str).str.strip()
+
+# Keep ELISA SN as numeric
+HPAI_results["ELISA_SN"] = pd.to_numeric(
+    HPAI_results["ELISA_SN"],
+    errors="coerce"
+)
+
+# Normalize whitespace in this column
+HPAI_results["ELISA_Interpretation"] = (
+    HPAI_results["ELISA_Interpretation"]
+    .astype(str)
+    .str.strip()
+    .str.title()
+)
+
+# Keep the date as a separate column for now
+HPAI_results["Test_Date"] = pd.to_datetime("2025-05-22")
+
+# Check for missing values
+print("Number of N/A:", HPAI_results.isna().sum())
+
+# Check for duplicates again
+print("Exact duplicate rows:", HPAI_results.duplicated().sum())
+
+display(HPAI_results)
 # Data analysis with clean data
 
 # Correlation Matrix
