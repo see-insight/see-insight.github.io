@@ -508,66 +508,67 @@ for file_path in sorted(data_directory.glob("Robot Farm #*.xlsx")):
 print(f"\nParsed {len(Robot_milking_data)} workbooks")
 # More initial data analysis
 # HPAI Results pre-clean analysis
-# First 3 rows
-print(HPAI_results.head(3))
-# Last 3 rows
-print(HPAI_results.tail(3))
-print("\nNumber of rows:")
-print(len(HPAI_results))
-print("\nUnique values:")
-print(HPAI_results.nunique())
-print("\nDuplicates")
-HPAI_results_duplicates = HPAI_results[HPAI_results.duplicated()]
-print(HPAI_results_duplicates)
-print("\nNumber of duplicate rows:", HPAI_results.duplicated().sum())
+def analyze_HPAI_results(data_dict, label):
+    print(f"\n##### {label} #####")
+    # First 3 rows
+    print(data_dict.head(3))
+    # Last 3 rows
+    print(data_dict.tail(3))
+    print("\nNumber of rows:")
+    print(len(data_dict))
+    print("\nUnique values:")
+    print(data_dict.nunique())
+    print("\nDuplicates")
+    HPAI_results_duplicates = data_dict[data_dict.duplicated()]
+    print(HPAI_results_duplicates)
+    print("\nNumber of duplicate rows:", data_dict.duplicated().sum())
 
+analyze_HPAI_results(HPAI_results, "PRE-CLEAN")
 # Robotic milking data pre-clean analysis
 # Tables are keyed by table type: 'daily_milk', 'quality', 'visits',
 # 'lactation', 'events', 'feed'. Data is still RAW here: expect '10/S/2024'-
 # style dates, '5:28' durations, and AVG/SUM rows. That is intentional.
 
-# Total number of files and tabs
-total_files = len(Robot_milking_data)
-total_tabs = sum(len(sheets) for sheets in Robot_milking_data.values())
-print("\nNumber of files:", total_files)
-print("\nNumber of tabs:", total_tabs)
+def analyze_robot_data(data_dict, label):
+    total_files = len(data_dict)
+    total_tabs = sum(len(sheets) for sheets in data_dict.values())
+    print(f"\n##### {label} #####")
+    print("\nNumber of files:", total_files)
+    print("\nNumber of tabs:", total_tabs)
 
-for file_name, sheets in Robot_milking_data.items():
+    for file_name, sheets in data_dict.items():
 
-    # Separate files with lines
-    print("\n" + "=" * 60)
-    print("File:", file_name)
-    print("=" * 60)
+        # Separate files with lines
+        print("\n" + "=" * 60)
+        print("File:", file_name)
+        print("=" * 60)
 
-    for sheet_name, df in sheets.items():
+        for sheet_name, df in sheets.items():
 
-        # Separate tabs with lines
-        print("\n" + "-" * 40)
-        print("Tab:", sheet_name)
-        print("-" * 40)
+            # Separate tabs with lines
+            print("\n" + "-" * 40)
+            print("Tab:", sheet_name)
+            print("-" * 40)
 
-        # First 3 rows
-        print("\nFirst 3 rows:")
-        print(df.head(3))
+            print("\nFirst 3 rows:")
+            print(df.head(3))
 
-        # Last 3 rows
-        print("\nLast 3 rows:")
-        print(df.tail(3))
+            print("\nLast 3 rows:")
+            print(df.tail(3))
 
-        # Unique values
-        print("\nUnique values:")
-        print(df.nunique())
+            print("\nUnique values:")
+            print(df.nunique())
 
-        # Duplicates
-        duplicates = df[df.duplicated()]
-        print("\nDuplicates:")
-        print(duplicates)
+            duplicates = df[df.duplicated()]
+            print("\nDuplicates:")
+            print(duplicates)
 
-        print("\nNumber of duplicate rows:", df.duplicated().sum())
+            print("\nNumber of duplicate rows:", df.duplicated().sum())
 
-        # Missing values
-        print("\nNumber of NA:")
-        print(df.isna().sum())
+            print("\nNumber of NA:")
+            print(df.isna().sum())
+
+analyze_robot_data(Robot_milking_data, "PRE-CLEAN")
 
 # Clean the data
 # Clean HPAI Results
@@ -633,6 +634,13 @@ for file_name, tables in Robot_milking_data.items():
         except Exception as e:
             print(f"CLEAN FAILED: {file_name} {kind}: {e}")
     Robot_milking_data_clean[file_name] = cleaned
+
+# Data analysis with clean data
+# HPAI Results Data Analysis
+analyze_HPAI_results(HPAI_results, "POST-CLEAN")
+
+# Robotic Milking Data Analysis
+analyze_robot_data(Robot_milking_data_clean, "POST-CLEAN")
 
 # Rename columns/features for ease of use
 RENAME_MAP = {
@@ -720,8 +728,6 @@ def apply_rename(tables_dict, rename_map):
 
 Robot_milking_data_renamed = apply_rename(Robot_milking_data_clean, RENAME_MAP)
 
-# Data analysis with clean data
-
 # Correlation Matrix
 # Stack every cow's clean daily-milk table into one big table
 daily_all = pd.concat(
@@ -765,3 +771,14 @@ plt.savefig("correlation_matrix.png", dpi=300)
 plt.show()
 
 # Conclusion
+# Cleaning the robotic milking data was very complex and required many complex functions.
+# Our correlation matrix doesn't have any strong daily signals features.
+# Because we only had 1 farm ELISA test for this timeframe, an unsupervised model
+# will be by far the superior choice, unless there is lost results we can find.
+# All non-redundant features will be used in our future model.
+# Literature shows that HPAI is often less severe in cows than poultry, and other
+# methods include cameras to see cow facial behavior, thermal cameras, and internal chips.
+# Cow parameters having to do with lactation, pregnancy, and other variables likely
+# have more impact on their milk quality than HPAI would, making predictions complex.
+# Cows with HPAI will have thicker, colostrum-like milk, appetite loss, and a fever,
+# along with other symptoms that can't be included in our model.
