@@ -780,5 +780,5 @@ plt.show()
 # methods include cameras to see cow facial behavior, thermal cameras, and internal chips.
 # Cow parameters having to do with lactation, pregnancy, and other variables likely
 # have more impact on their milk quality than HPAI would, making predictions complex.
-# Cows with HPAI will have thicker, colostrum-like milk, appetite loss, and a fever,
-# along with other symptoms that can't be included in our model.
+# Cows with HPAI will have less milk that is thicker and colostrum-like, appetite loss,
+# and a fever, along with other symptoms that can't be included in our model.
