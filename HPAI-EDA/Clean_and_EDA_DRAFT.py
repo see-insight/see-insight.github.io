@@ -1,6 +1,8 @@
 """
+This is a draft to show workflows, don't use for other codes
 Exploratory Data Analysis for the early detection of HPAI in cows
 using robotic milking project
+Vibe coded massive data cleaning
 Data is collected by the DRIVE Lab from videos into Excel spreadsheets
 Contributions by Brendan Daly
 """
