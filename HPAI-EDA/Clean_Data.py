@@ -9,13 +9,8 @@ Contributions by Brendan Daly
 # Load in necessary libraries
 from pathlib import Path
 import openpyxl
-import re
-from datetime import datetime, date
-import numpy as np
 import pandas as pd
-import os
 from IPython.display import display
-import matplotlib.pyplot as plt
 
 """HPAI Results/Labels"""
 # Read in HPAI results/classification for data cleaning
@@ -83,6 +78,9 @@ print("Exact duplicate rows:", HPAI_results.duplicated().sum())
 clean_HPAI_results = HPAI_results
 display(clean_HPAI_results)
 
+# Analyze the data after cleaning it
+analyze_HPAI_results(HPAI_results, "POST-CLEAN")
+
 """Robotic Milking Data"""
 # A function to extract the digits from the file name to obtain the cow ID
 def cow_id_from_file_name(file_name_string):
@@ -146,6 +144,63 @@ def fingerprint_tabs(file_name):
         "MD #156": "daily_milk",
         "MD #157": "daily_milk",
         "MD #158": "daily_milk",
+        "Daily milk #16": "daily_milk",
+        "MD #162": "daily_milk",
+        "MD #163": "daily_milk",
+        "MD #164": "daily_milk",
+        "MD #165": "daily_milk",
+        "MD #166": "daily_milk",
+        "MD #167": "daily_milk",
+        "MD #168": "daily_milk",
+        "Daily milk #18": "daily_milk",
+        "Daily milk #19": "daily_milk",
+        "Daily milk #2": "daily_milk",
+        "Daily milk #21": "daily_milk",
+        "Daily milk #23": "daily_milk",
+        "Daily milk #26": "daily_milk",
+        "Daily milk #27": "daily_milk",
+        "Daily milk #28": "daily_milk",
+        "Daily milk #3": "daily_milk",
+        "Daily milk #32": "daily_milk",
+        "Daily milk #33": "daily_milk",
+        "Daily milk #34": "daily_milk",
+        "Daily milk #35": "daily_milk",
+        "Daily Milk #36": "daily_milk",
+        "Daily milk#40": "daily_milk",
+        "Daily milk #41": "daily_milk",
+        "Daily Milk #47": "daily_milk",
+        "Daily milk #49": "daily_milk",
+        "Daily Milk #53": "daily_milk",
+        "Daily milk #54": "daily_milk",
+        "Daily Milk #55": "daily_milk",
+        "Daily milk #57": "daily_milk",
+        "Daily milk #58": "daily_milk",
+        "Daily milk #60": "daily_milk",
+        "Daily milk #62": "daily_milk",
+        "Daily milk #63": "daily_milk",
+        "Daily milk #64": "daily_milk",
+        "Daily milk #66": "daily_milk",
+        "Daily milk #67": "daily_milk",
+        "Daily milk #69": "daily_milk",
+        "Daily milk #7": "daily_milk",
+        "Daily milk #72": "daily_milk",
+        "Daily milk #73": "daily_milk",
+        "Daily milk #74": "daily_milk",
+        "Daily milk #76": "daily_milk",
+        "Daily milk #77": "daily_milk",
+        "Daily milk #78": "daily_milk",
+        "Daily mik #8": "daily_milk",
+        "Daily milk #80": "daily_milk",
+        "Daily milk #81": "daily_milk",
+        "Daily milk #82": "daily_milk",
+        "Daily milk #86": "daily_milk",
+        "Daily milk #87": "daily_milk",
+        "Daily Milk": "daily_milk",
+        "Daily Milk": "daily_milk",
+        "Daily Milk": "daily_milk",
+        "Daily Milk": "daily_milk",
+        "Daily Milk": "daily_milk",
+        "Daily Milk": "daily_milk",
 
         "Quality #85": "quality",
         "Quality #1": "quality",
@@ -188,6 +243,62 @@ def fingerprint_tabs(file_name):
         "MQ #157": "quality",
         "MQ #158": "quality",
         "Quality #16": "quality",
+        "MQ #162": "quality",
+        "MQ #163": "quality",
+        "MQ #164": "quality",
+        "MQ #165": "quality",
+        "MQ #166": "quality",
+        "MQ #167": "quality",
+        "MQ #168": "quality",
+        "Quality #18": "quality",
+        "Quality #19": "quality",
+        "Quality #2": "quality",
+        "Quality #21": "quality",
+        "Quality #23": "quality",
+        "Quality #26": "quality",
+        "Quality #27": "quality",
+        "Quality #28": "quality",
+        "Quality #3": "quality",
+        "Quality #32": "quality",
+        "Quality #33": "quality",
+        "Quality #34": "quality",
+        "Quality #35": "quality",
+        "Quality #36": "quality",
+        "Quality #40": "quality",
+        "Quality #41": "quality",
+        "Quality #47": "quality",
+        "Quality #49": "quality",
+        "Quality #53": "quality",
+        "Quality #54": "quality",
+        "Quality #55": "quality",
+        "Quality #57": "quality",
+        "Quality #58": "quality",
+        "Quality #60": "quality",
+        "Quality #62": "quality",
+        "Quality #63": "quality",
+        "Quality #64": "quality",
+        "Quality #66": "quality",
+        "Quality #67": "quality",
+        "Quality #69": "quality",
+        "Quality #7": "quality",
+        "Quality #72": "quality",
+        "Quality #73": "quality",
+        "Quality #74": "quality",
+        "Quality #76": "quality",
+        "Quality #77": "quality",
+        "Quality #78": "quality",
+        "Quality #8": "quality",
+        "Quality #80": "quality",
+        "Quality #81": "quality",
+        "Quality #82": "quality",
+        "Quality #86": "quality",
+        "Quality #87": "quality",
+        "Quality": "quality",
+        "Quality": "quality",
+        "Quality": "quality",
+        "Quality": "quality",
+        "Quality": "quality",
+        "Quality": "quality",
 
         "Visits #85": "visits",
         "Visits #1": "visits",
@@ -230,6 +341,62 @@ def fingerprint_tabs(file_name):
         "MV #157": "visits",
         "MV #158": "visits",
         "Visits #16": "visits",
+        "MV #162": "visits",
+        "MV #163": "visits",
+        "MV #164": "visits",
+        "MV #165": "visits",
+        "MV #166": "visits",
+        "MV #167": "visits",
+        "MV #168": "visits",
+        "Visits #18": "visits",
+        "Visits #19": "visits",
+        "Visits #2": "visits",
+        "Visits #21": "visits",
+        "Visits #23": "visits",
+        "Visits #26": "visits",
+        "Visits #27": "visits",
+        "Visits #28": "visits",
+        "Visits #3": "visits",
+        "Visits #32": "visits",
+        "Visits #33": "visits",
+        "Visits #34": "visits",
+        "Visits #35": "visits",
+        "Visits #36": "visits",
+        "Visits #40": "visits",
+        "Visits #41": "visits",
+        "Visits #47": "visits",
+        "Visits #49": "visits",
+        "Visits #53": "visits",
+        "Visits #54": "visits",
+        "Visits #55": "visits",
+        "Visits #57": "visits",
+        "Visits #58": "visits",
+        "Visits #60": "visits",
+        "Visits #62": "visits",
+        "Visits #63": "visits",
+        "Visits #64": "visits",
+        "Visits #66": "visits",
+        "Visits #67": "visits",
+        "Visits #69": "visits",
+        "Visits #7": "visits",
+        "Visits #72": "visits",
+        "Visits #73": "visits",
+        "Visits #74": "visits",
+        "Visits #76": "visits",
+        "Visits #77": "visits",
+        "Visits #78": "visits",
+        "Visits #8": "visits",
+        "Visits #80": "visits",
+        "Visits #81": "visits",
+        "Visits #82": "visits",
+        "Visits #86": "visits",
+        "Visits #87": "visits",
+        "Visit": "visits",
+        "Visit": "visits",
+        "Visit": "visits",
+        "Visit": "visits",
+        "Visit": "visits",
+        "Visit": "visits",
 
         "Lactation #85": "lactation",
         "Lactation #1": "lactation",
@@ -272,6 +439,62 @@ def fingerprint_tabs(file_name):
         "LAC #157": "lactation",
         "LAC #158": "lactation",
         "Lactation #16": "lactation",
+        "LAC #162": "lactation",
+        "LAC #163": "lactation",
+        "LAC #164": "lactation",
+        "LAC #165": "lactation",
+        "LAC #166": "lactation",
+        "LAC #167": "lactation",
+        "LAC #168": "lactation",
+        "Lactation #18": "lactation",
+        "Lactation #19": "lactation",
+        "Lactation #2": "lactation",
+        "Lactation #21": "lactation",
+        "Lactation #23": "lactation",
+        "Lactation #26": "lactation",
+        "Lactation #27": "lactation",
+        "Lactation #28": "lactation",
+        "Lactation #3": "lactation",
+        "Lactation #32": "lactation",
+        "Lactation #33": "lactation",
+        "Lactation #34": "lactation",
+        "Lactation #35": "lactation",
+        "Lactation #36": "lactation",
+        "Lactation #40": "lactation",
+        "Lactation #41": "lactation",
+        "Lactation #47": "lactation",
+        "Lactation #49": "lactation",
+        "Lactation #53": "lactation",
+        "Lactation #54": "lactation",
+        "Lactation #55": "lactation",
+        "Lactation #57": "lactation",
+        "Lactation #58": "lactation",
+        "Lactation #60": "lactation",
+        "Lactation #62": "lactation",
+        "Lactation #63": "lactation",
+        "Lactation #64": "lactation",
+        "Lactation #66": "lactation",
+        "Lactation #67": "lactation",
+        "Lactation #69": "lactation",
+        "Lactation #7": "lactation",
+        "Lactation #72": "lactation",
+        "Lactation #73": "lactation",
+        "Lactation #74": "lactation",
+        "Lactation #76": "lactation",
+        "Lactation #77": "lactation",
+        "Lactation #78": "lactation",
+        "Lactation #8": "lactation",
+        "Lactation #80": "lactation",
+        "Lactation #81": "lactation",
+        "Lactation #82": "lactation",
+        "Lactation #86": "lactation",
+        "Lactation #87": "lactation",
+        "Lactation": "lactation",
+        "Lactation": "lactation",
+        "Lactation": "lactation",
+        "Lactation": "lactation",
+        "Lactation": "lactation",
+        "Lactation": "lactation",
 
         "Events #85": "events",
         "Events #1": "events",
@@ -314,6 +537,62 @@ def fingerprint_tabs(file_name):
         "EVENTS #157": "events",
         "EVENTS #158": "events",
         "Events #16": "events",
+        "EVENTS #162": "events",
+        "EVENTS #163": "events",
+        "EVENTS #164": "events",
+        "EVENTS #165": "events",
+        "EVENTS #166": "events",
+        "EVENTS #167": "events",
+        "EVENTS #168": "events",
+        "Events #18": "events",
+        "Events #19": "events",
+        "Events #2": "events",
+        "Events #21": "events",
+        "Events #23": "events",
+        "Events #26": "events",
+        "Events #27": "events",
+        "Events #28": "events",
+        "Events #3": "events",
+        "Events #32": "events",
+        "Events #33": "events",
+        "Events #34": "events",
+        "Events #35": "events",
+        "Events #36": "events",
+        "Events #40": "events",
+        "Events #41": "events",
+        "Events #47": "events",
+        "Events #49": "events",
+        "Events #53": "events",
+        "Events #54": "events",
+        "Events #55": "events",
+        "Events #57": "events",
+        "Events #58": "events",
+        "Events #60": "events",
+        "Events #62": "events",
+        "Events #63": "events",
+        "Events #64": "events",
+        "Events #66": "events",
+        "Events #67": "events",
+        "Events #69": "events",
+        "Events #7": "events",
+        "Events #72": "events",
+        "Events #73": "events",
+        "Events #74": "events",
+        "Events #76": "events",
+        "Events #77": "events",
+        "Events #78": "events",
+        "Events #8": "events",
+        "Events #80": "events",
+        "Events #81": "events",
+        "Events #82": "events",
+        "Events #86": "events",
+        "Events #87": "events",
+        "Event": "events",
+        "Events": "events",
+        "Events": "events",
+        "Events": "events",
+        "Events": "events",
+        "Events": "events",
 
         "Feed #85": "feed",
         "Feed #1": "feed",
@@ -356,6 +635,67 @@ def fingerprint_tabs(file_name):
         "FD #157": "feed",
         "FD #158": "feed",
         "Feed #16": "feed",
+        "FD #162": "feed",
+        "FD #163": "feed",
+        "FD #164": "feed",
+        "FD #165": "feed",
+        "FD #166": "feed",
+        "FD #167": "feed",
+        "FD #168": "feed",
+        "Feed #18": "feed",
+        "Feed #19": "feed",
+        "Feed #2": "feed",
+        "Feed #21": "feed",
+        "Feed #23": "feed",
+        "Feed #26": "feed",
+        "Feed #27": "feed",
+        "Feed #28": "feed",
+        "Feed #3": "feed",
+        "Feed #32": "feed",
+        "Feed #33": "feed",
+        "Feed #34": "feed",
+        "Feed #35": "feed",
+        "Feed #36": "feed",
+        "Feed #40": "feed",
+        "Feed #41": "feed",
+        "Feed #47": "feed",
+        "Feed #49": "feed",
+        "Feed #53": "feed",
+        "Feed #54": "feed",
+        "Feed #55": "feed",
+        "Feed #57": "feed",
+        "Feed #58": "feed",
+        "Feed #60": "feed",
+        "Feed #62": "feed",
+        "Feed #63": "feed",
+        "Feed #64": "feed",
+        "Feed #66": "feed",
+        "Feed #67": "feed",
+        "Feed #69": "feed",
+        "Feed #7": "feed",
+        "Feed #72": "feed",
+        "Feed #73": "feed",
+        "Feed #74": "feed",
+        "Feed #76": "feed",
+        "Feed #77": "feed",
+        "Feed #78": "feed",
+        "Feed #8": "feed",
+        "Feed #80": "feed",
+        "Feed #81": "feed",
+        "Feed #82": "feed",
+        "Feed #86": "feed",
+        "Feed #87": "feed",
+        "Feed": "feed",
+        "Feed": "feed",
+        "Feed": "feed",
+        "Feed": "feed",
+        "Feed": "feed",
+        "Feed": "feed",
+    }
+    # Normalize dictionary keys
+    translation_map = {
+        key.strip().lower(): value
+        for key, value in translation_map.items()
     }
     # Loop through the tabs in each file and translate them
     fingerprints = {}
@@ -398,4 +738,76 @@ for file_name in sorted(data_directory.glob("Robot Farm #*.xlsx")):
         print("ISSUES:", errors)
     robot_milking_data[file_name.name] = tables
 
+# Function to analyze robot milking data
+def analyze_robot_data(data_dict, label):
+    total_files = len(data_dict)
+    total_tabs = sum(len(sheets) for sheets in data_dict.values())
+    print(f"{label}")
+    print("Number of files:", total_files)
+    print("Number of tabs:", total_tabs)
+    for file_name, sheets in data_dict.items():
+        # Separate files with lines
+        print("=" * 60)
+        print("File:", file_name)
+        print("=" * 60)
+        for sheet_name, df in sheets.items():
+            # Separate tabs with lines
+            print("-" * 40)
+            print("Tab:", sheet_name)
+            print("-" * 40)
+            print(df.head(3))
+            print(df.tail(3))
+            print("Unique values:", df.nunique())
+            duplicates = df[df.duplicated()]
+            print("Duplicates:", duplicates)
+            print("Number of duplicate rows:", df.duplicated().sum())
+            print("Number of NA per column:", df.isna().sum())
+            print("Total NA:", df.isna().sum().sum())
 
+# Analyze the data before cleaning it
+analyze_robot_data(robot_milking_data, "PRE-CLEAN")
+
+# Clean daily_milk
+def clean_daily_milk(df):
+    clean_df = df.copy()
+    # Manually cleaned data
+
+    return clean_df
+
+# Clean quality
+def clean_quality(df):
+    clean_df = df.copy()
+    # Manually cleaned data
+
+    return clean_df
+
+# Clean visits
+def clean_visits(df):
+    clean_df = df.copy()
+    # Manually cleaned data
+
+    return clean_df
+
+# Clean lactation
+def clean_lactation(df):
+    clean_df = df.copy()
+    # Manually cleaned data
+
+    return clean_df
+
+# Clean events (events are mostly just text, and they likely won't be very useful for our models.)
+def clean_events(df):
+    clean_df = df.copy()
+    # Manually cleaned data
+
+    return clean_df
+
+# Clean feed
+def clean_feed(df):
+    clean_df = df.copy()
+    # Manually cleaned data
+
+    return clean_df
+
+# Analyze the data after cleaning it
+analyze_robot_data(robot_milking_data, "POST-CLEAN")
