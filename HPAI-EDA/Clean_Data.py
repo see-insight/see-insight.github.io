@@ -771,6 +771,40 @@ analyze_robot_data(robot_milking_data, "PRE-CLEAN")
 def clean_daily_milk(df):
     clean_df = df.copy()
     # Manually cleaned data
+    # Fix column names and remove invisible spaces
+    clean_df = clean_df.rename(columns=lambda x: " ".join(str(x).split()))
+    # Rename columns
+    clean_df = clean_df.rename(columns={
+        "date": "Date",
+        "datetime": "Date Time",
+        "lactation_days": "Lactation Days",
+        "programmed_rest_feed": "Programmed Rest Feed",
+        "rest_feed": "Rest Feed",
+        "day_production": "Day Production",
+        "day_production_dev": "Day Production Dev",
+        "isk": "ISK",
+        "milkings": "Milkings",
+        "refusals": "Refusals",
+        "failures": "Failures",
+        "milkings_avg": "Milkings Avg",
+        "refusals_avg": "Refusals Avg",
+        "failures_avg": "Failures Avg",
+        "fat_indication": "Fat Indication",
+        "protein_indication": "Protein Indication",
+        "lactose_indication": "Lactose Indication",
+    })
+    # Remove AVG, SUM, etc. because models won't use these
+    is_summary = clean_df.astype(str).apply(
+        lambda col: col.str.lower().str.strip().isin(['total', 'sum', 'average', 'avg'])).any(axis=1)
+    clean_df = clean_df[~is_summary]
+    # Force all ML data to be usable numbers
+    # Convert date first
+    clean_df["Date time", "Date Time"] = pd.to_datetime(clean_df["Date Time"])
+    # Then coerce only the numeric columns
+    numeric_cols = clean_df.select_dtypes(exclude=["datetime", "object"]).columns
+    clean_df[numeric_cols] = clean_df[numeric_cols].apply(pd.to_numeric, errors='coerce')
+    # Convert all NA values to the median value
+    clean_df = clean_df.fillna(clean_df.median())
 
     return clean_df
 
@@ -778,6 +812,47 @@ def clean_daily_milk(df):
 def clean_quality(df):
     clean_df = df.copy()
     # Manually cleaned data
+    # Fix column names and remove invisible spaces
+    clean_df = clean_df.rename(columns=lambda x: " ".join(str(x).split()))
+    # Rename columns
+    clean_df = clean_df.rename(columns={
+        "address": "Address",
+        "failure": "Failure",
+        "milk_yield": "Milk Yield",
+        "milk_yield_expected": "Milk Yield Expected",
+        "milk_yield_expect": "Milk Yield Expected",
+        "conductivity_lf": "Conductivity LF",
+        "conductivity_rf": "Conductivity RF",
+        "conductivity_lr": "Conductivity LR",
+        "conductivity_rr": "Conductivity RR",
+        "color_code_lf": "Color Code LF",
+        "color_code_rf": "Color Code RF",
+        "color_code_lr": "Color Code LR",
+        "color_code_rr": "Color Code RR",
+        "temp_milk": "Milk Temperature",
+        "device_name": "Device Name",
+        "visit_result": "Visit Result",
+        "milk_speed": "Milk Speed",
+        "milk_speed_max": "Milk Speed Max",
+        "interv": "Milking Interval (min)",
+        "box_time": "Box Time (min)",
+        "treat_time": "Treat Time (min)",
+        "dead_milk_time_lf": "Dead Milk Time LF (min)",
+        "dead_milk_time_rf": "Dead Milk Time RF (min)",
+        "dead_milk_time_lr": "Dead Milk Time LR (min)",
+        "dead_milk_time_rr": "Dead Milk Time RR (min)",
+        "milk_time_lf": "Milk Time LF (min)",
+        "milk_time_rf": "Milk Time RF (min)",
+        "milk_time_lr": "Milk Time LR (min)",
+        "milk_time_rr": "Milk Time RR (min)",
+        "attachments_lf": "Attachments LF",
+        "attachments_rf": "Attachments RF",
+        "attachments_lr": "Attachments LR",
+        "attachments_rr": "Attachments RR",
+        "milk_destin": "Milk Destination",
+        "routing_direction": "Routing Direction",
+        "bottle_num": "Bottle Num",
+    })
 
     return clean_df
 
@@ -785,6 +860,59 @@ def clean_quality(df):
 def clean_visits(df):
     clean_df = df.copy()
     # Manually cleaned data
+    # Fix column names and remove invisible spaces
+    clean_df = clean_df.rename(columns=lambda x: " ".join(str(x).split()))
+    # Rename columns
+    clean_df = clean_df.rename(columns={
+        "address": "Address",
+        "failure": "Failure",
+        "milk_yield": "Milk Yield",
+        "milk_yield_expected": "Milk Yield Expected",
+        "milk_yield_expect": "Milk Yield Expected",
+        "conductivity_lf": "Conductivity LF",
+        "conductivity_rf": "Conductivity RF",
+        "conductivity_lr": "Conductivity LR",
+        "conductivity_rr": "Conductivity RR",
+        "color_code_lf": "Color Code LF",
+        "color_code_rf": "Color Code RF",
+        "color_code_lr": "Color Code LR",
+        "color_code_rr": "Color Code RR",
+        "temp_milk": "Milk Temperature",
+        "device_name": "Device Name",
+        "visit_result": "Visit Result",
+        "milk_speed": "Milk Speed",
+        "milk_speed_max": "Milk Speed Max",
+        "interv": "Milking Interval (min)",
+        "box_time": "Box Time (min)",
+        "treat_time": "Treat Time (min)",
+        "dead_milk_time_lf": "Dead Milk Time LF (min)",
+        "dead_milk_time_rf": "Dead Milk Time RF (min)",
+        "dead_milk_time_lr": "Dead Milk Time LR (min)",
+        "dead_milk_time_rr": "Dead Milk Time RR (min)",
+        "milk_time_lf": "Milk Time LF (min)",
+        "milk_time_rf": "Milk Time RF (min)",
+        "milk_time_lr": "Milk Time LR (min)",
+        "milk_time_rr": "Milk Time RR (min)",
+        "attachments_lf": "Attachments LF",
+        "attachments_rf": "Attachments RF",
+        "attachments_lr": "Attachments LR",
+        "attachments_rr": "Attachments RR",
+        "milk_destin": "Milk Destination",
+        "routing_direction": "Routing Direction",
+        "bottle_num": "Bottle Num",
+    })
+    # Remove AVG, SUM, etc. because models won't use these
+    is_summary = clean_df.astype(str).apply(
+        lambda col: col.str.lower().str.strip().isin(['total', 'sum', 'average', 'avg'])).any(axis=1)
+    clean_df = clean_df[~is_summary]
+    # Force all ML data to be usable numbers
+    # Convert date first
+    clean_df["Date"] = pd.to_datetime(clean_df["Date"])
+    # Then coerce only the numeric columns
+    numeric_cols = clean_df.select_dtypes(exclude=["datetime", "object"]).columns
+    clean_df[numeric_cols] = clean_df[numeric_cols].apply(pd.to_numeric, errors='coerce')
+    # Convert all NA values to the median value
+    clean_df = clean_df.fillna(clean_df.median())
 
     return clean_df
 
@@ -792,6 +920,21 @@ def clean_visits(df):
 def clean_lactation(df):
     clean_df = df.copy()
     # Manually cleaned data
+    # Fix column names and remove invisible spaces
+    clean_df = clean_df.rename(columns=lambda x: " ".join(str(x).split()))
+    # Rename columns
+    clean_df = clean_df.rename(columns={
+        "lactation_number": "Lactation Number",
+        "calving_date": "Calving Date",
+        "lactation_production": "Lactation Production",
+        "predicted_production_305d": "Predicted Production 305d",
+        "milk_separated": "Milk Separated",
+        "amount_total": "Amount Total",
+        "rest_feed_total": "Rest Feed Total",
+        "fat_pct": "Fat %",
+        "protein_pct": "Protein %",
+        "lactose_pct": "Lactose %",
+    })
 
     return clean_df
 
@@ -799,6 +942,15 @@ def clean_lactation(df):
 def clean_events(df):
     clean_df = df.copy()
     # Manually cleaned data
+    # Fix column names and remove invisible spaces
+    clean_df = clean_df.rename(columns=lambda x: " ".join(str(x).split()))
+    # Rename columns
+    clean_df = clean_df.rename(columns={
+        "event_type": "Event Type",
+        "lactation_section": "Lactation Section",
+        "lactation_day": "Lactation Day",
+        "raw_desc": "Event Description",
+    })
 
     return clean_df
 
@@ -806,6 +958,28 @@ def clean_events(df):
 def clean_feed(df):
     clean_df = df.copy()
     # Manually cleaned data
+    # Fix column names and remove invisible spaces
+    clean_df = clean_df.rename(columns=lambda x: " ".join(str(x).split()))
+    # Rename columns
+    clean_df = clean_df.rename(columns={
+        "date": "Date",
+        "datetime": "Date Time",
+        "lactation_days": "Lactation Days",
+        "programmed_rest_feed": "Programmed Rest Feed",
+        "rest_feed": "Rest Feed",
+        "day_production": "Day Production",
+        "day_production_dev": "Day Production Dev",
+        "isk": "ISK",
+        "milkings": "Milkings",
+        "refusals": "Refusals",
+        "failures": "Failures",
+        "milkings_avg": "Milkings Avg",
+        "refusals_avg": "Refusals Avg",
+        "failures_avg": "Failures Avg",
+        "fat_indication": "Fat Indication",
+        "protein_indication": "Protein Indication",
+        "lactose_indication": "Lactose Indication",
+    })
 
     return clean_df
 
