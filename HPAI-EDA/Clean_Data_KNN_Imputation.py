@@ -32,7 +32,7 @@ Description:
 
  Next Steps: The method of imputation needs experimentation
  (ie. KNN is one method, median is another method)
- methods can be combined if applicable.
+ Methods can be combined if applicable.
  Advanced models such as XGBoost don't require imputation
  Experiment with the parameters as well
 
@@ -541,7 +541,7 @@ def looks_like_valid_date(text):
         return False
     if len(year) != 4:
         return False
-    return 2014 <= int(year) <= 2026 and 1 <= int(month) <= 12 and 1 <= int(day) <= 31
+    return 2024 <= int(year) <= 2026 and 1 <= int(month) <= 12 and 1 <= int(day) <= 31
 
 
 def looks_like_valid_time(text):
